@@ -37,12 +37,17 @@ NavigationLayout:
 
                     Display:
                         pos_hint: {'top':.55, 'center_x':.5}
+                        spacing: '8dp'
                         MyLabel:
                             text: 'History'
                             theme_text_color: 'Secondary'
                         MDSeparator:
                             height: 1
                         ScrollView:
+                            ChatLabel:
+                                text: ''
+                                id: sensor
+
 
                     GridLayout:
                         rows: 1
@@ -58,3 +63,19 @@ NavigationLayout:
                                 self.on_off_motor(self.num_bt2)
     MDNavigationDrawer:
         id: drawer
+        Card:
+            MDLabel:
+                text: 'About'
+                size_hint_y: None
+                height: self.texture_size[1]
+                font_size: '36dp'
+
+            MDSeparator:
+                height: '1dp'
+
+            MDLabel:
+                size_hint_y: None
+                height: self.texture_size[1]
+                text: 'https://wwww.agriculture.in.th/'
+                theme_text_color: 'Secondary'
+            MDLabel:

@@ -6,3 +6,26 @@
 <MyLabel>:
     size_hint_y: None
     height: self.texture_size[1]
+
+
+<ChatLabel@MDLabel>:
+    theme_text_color: 'Primary'
+    text_size: (self.width, None)
+    valign: 'top'
+    # padding: (-10, 0)  # fixed in Kivy 1.8.1
+    size_hint: (1, None)
+    height: self.texture_size[1]
+    markup: True
+
+<ScrollView>:
+    padding: 5
+    canvas.before:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+<Card@MDCard>:
+    padding: '10dp'
+    spacing: '10dp'
+    orientation: 'vertical'
+
