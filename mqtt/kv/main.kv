@@ -7,6 +7,7 @@ NavigationLayout:
                 orientation: 'vertical'
 
                 MDToolbar:
+                    id: tb
                     title: 'MQTT Disconnected'
                     left_action_items: [['menu', lambda x: drawer.set_state('open')]]
 
@@ -16,8 +17,9 @@ NavigationLayout:
                         MyLabel:
                             text: 'PH Sensor'
                             theme_text_color: 'Secondary'
-                        MDLabel:
-                            text: 'Sensor OFF'
+                        StatusLabel:
+                            id: stat1
+                            text: self.ph
                             halign: 'center'
                             font_size: '30dp'
 
@@ -27,7 +29,8 @@ NavigationLayout:
                         MyLabel:
                             text: 'Temp Sensor'
                             theme_text_color: 'Secondary'
-                        MDLabel:
+                        StatusLabel:
+                            id: stat2
                             text: 'Sensor OFF'
                             halign: 'center'
                             font_size: '30dp'
@@ -35,20 +38,23 @@ NavigationLayout:
                     Display:
                         pos_hint: {'top':.55, 'center_x':.5}
                         MyLabel:
-                            text: 'Oxy Sensor'
+                            text: 'History'
                             theme_text_color: 'Secondary'
-                        MDLabel:
-                            text: 'Sensor OFF'
-                            halign: 'center'
-                            font_size: '30dp'
+                        MDSeparator:
+                            height: 1
+                        ScrollView:
 
                     GridLayout:
                         rows: 1
                         pos_hint: {'top':.175, 'left':1}
                         size_hint: 1, .125
                         ImageButton:
-                            source: 'buttons/off.png'
+                            source: self.button_off
+                            on_release:
+                                self.change_mode(self.num_bt1)
                         ImageButton:
-                            source: 'buttons/off.png'
+                            source: self.button_off
+                            on_release:
+                                self.on_off_motor(self.num_bt2)
     MDNavigationDrawer:
         id: drawer
