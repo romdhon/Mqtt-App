@@ -1,0 +1,54 @@
+#:include kv/setting.kv
+
+NavigationLayout:
+    ScreenManager:
+        Screen:
+            BoxLayout:
+                orientation: 'vertical'
+
+                MDToolbar:
+                    title: 'MQTT Disconnected'
+                    left_action_items: [['menu', lambda x: drawer.set_state('open')]]
+
+                FloatLayout:
+                    Display:
+                        pos_hint: {'top':.95, 'right':.475}
+                        MyLabel:
+                            text: 'PH Sensor'
+                            theme_text_color: 'Secondary'
+                        MDLabel:
+                            text: 'Sensor OFF'
+                            halign: 'center'
+                            font_size: '30dp'
+
+
+                    Display:
+                        pos_hint: {'top':.95, 'right':.95}
+                        MyLabel:
+                            text: 'Temp Sensor'
+                            theme_text_color: 'Secondary'
+                        MDLabel:
+                            text: 'Sensor OFF'
+                            halign: 'center'
+                            font_size: '30dp'
+
+                    Display:
+                        pos_hint: {'top':.55, 'center_x':.5}
+                        MyLabel:
+                            text: 'Oxy Sensor'
+                            theme_text_color: 'Secondary'
+                        MDLabel:
+                            text: 'Sensor OFF'
+                            halign: 'center'
+                            font_size: '30dp'
+
+                    GridLayout:
+                        rows: 1
+                        pos_hint: {'top':.175, 'left':1}
+                        size_hint: 1, .125
+                        ImageButton:
+                            source: 'buttons/off.png'
+                        ImageButton:
+                            source: 'buttons/off.png'
+    MDNavigationDrawer:
+        id: drawer
