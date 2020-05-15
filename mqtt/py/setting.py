@@ -5,6 +5,10 @@ from kivy.uix.button import ButtonBehavior
 from kivy.uix.image import Image
 from kivy.properties import StringProperty, NumericProperty
 from kivymd.app import MDApp
+from kivy.uix.boxlayout import BoxLayout
+
+class ContentNavigationDrawer(BoxLayout):
+    pass
 
 class Display(MDCard):
     pass

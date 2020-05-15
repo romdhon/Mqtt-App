@@ -10,6 +10,7 @@ NavigationLayout:
                     id: tb
                     title: 'MQTT Disconnected'
                     left_action_items: [['menu', lambda x: drawer.set_state('open')]]
+                    right_action_items: [[app.icon, lambda y: app.play()]]
 
                 FloatLayout:
                     Display:
@@ -64,19 +65,4 @@ NavigationLayout:
                                 self.on_off_motor(self.num_bt2)
     MDNavigationDrawer:
         id: drawer
-        Card:
-            MDLabel:
-                text: 'About'
-                size_hint_y: None
-                height: self.texture_size[1]
-                font_size: '36dp'
-
-            MDSeparator:
-                height: '1dp'
-
-            MDLabel:
-                size_hint_y: None
-                height: self.texture_size[1]
-                text: 'https://wwww.agriculture.in.th/'
-                theme_text_color: 'Secondary'
-            MDLabel:
+        ContentNavigationDrawer:

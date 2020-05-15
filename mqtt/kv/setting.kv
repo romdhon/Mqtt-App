@@ -29,3 +29,69 @@
     spacing: '10dp'
     orientation: 'vertical'
 
+<ContentNavigationDrawer>:
+    Card:
+        MDLabel:
+            text: 'About'
+            size_hint_y: None
+            height: self.texture_size[1]
+            font_size: '36dp'
+
+        MDSeparator:
+            height: '1dp'
+        
+        AnchorLayout:
+            anchor_x: 'left'
+            size_hint_y: None
+            height: avatar1.height
+
+            Image:
+                id: avatar1
+                size_hint: None, None
+                size: '56dp', '56dp'
+                source: 'data/pnu.png'
+
+        MDLabel:
+            text: 'Princess of Naradhiwas University'
+            font_style: 'Button'
+            size_hint_y: None 
+            height: self.texture_size[1]
+            theme_text_color: 'Secondary'
+
+        AnchorLayout:
+            anchor_x: 'left'
+            size_hint_y: None
+            height: avatar2.height
+
+            Image:
+                id: avatar2
+                size_hint: None, None
+                size: '56dp', '56dp'
+                source: 'data/cpe.png'
+
+        MDLabel: 
+            text: 'Faculty of Computer Engineering'
+            font_style: 'Button'
+            size_hint_y: None
+            height: self.texture_size[1]
+            theme_text_color: 'Secondary'
+
+        MDLabel:
+
+        MDLabel:
+            text: 'Reference'
+            size_hint_y: None
+            height: self.texture_size[1]
+            font_size: '36dp'
+
+        MDSeparator:
+            height: '1dp'
+
+        MDLabel:
+            size_hint_y: None
+            height: self.texture_size[1]
+            text: 'https://wwww.agriculture.in.th/'
+            theme_text_color: 'Secondary'
+
+        MDLabel:
+
