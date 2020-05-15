@@ -19,7 +19,7 @@ NavigationLayout:
                             theme_text_color: 'Secondary'
                         StatusLabel:
                             id: stat1
-                            text: self.ph
+                            text: 'Sensor OFF'
                             halign: 'center'
                             font_size: '30dp'
 
@@ -37,6 +37,7 @@ NavigationLayout:
 
                     Display:
                         pos_hint: {'top':.55, 'center_x':.5}
+                        size_hint_x: .8
                         spacing: '8dp'
                         MyLabel:
                             text: 'History'
