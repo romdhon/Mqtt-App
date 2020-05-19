@@ -1,6 +1,6 @@
 from kivymd.app import MDApp
 from kivy.lang import Builder
-from py.setting import Display, StatusLabel
+from py.setting import Display, StatusLabel, ImageButton
 import paho.mqtt.client as mqtt
 import datetime, pytz
 import random
@@ -54,17 +54,30 @@ class MainApp(MDApp):
                                                                                                        thai_time,
                                                                                                        num)
 
+        current_time = datetime.datetime.strptime(thai_time, '%H:%M:%S').time()
+
+        start_time1 = datetime.datetime.strptime('04:20:00', '%H:%M:%S').time()
+        end_time1 = datetime.datetime.strptime('04:25:00', '%H:%M:%S').time()
+
+        start_time2 = datetime.datetime.strptime('18:00:00', '%H:%M:%S').time()
+        end_time2 = datetime.datetime.strptime('18:05:00', '%H:%M:%S').time()
+        # print(current_time, start_time, end_time)
+
+        text = self.root.ids.auto.text
+        if (start_time1 <= current_time <= end_time1) or \
+           (start_time2 <= current_time <= end_time2):
+            if text=='AUTOMODE ON':
+                self.mqttc.publish('sensors_in/moisture', 5)
+                print(5)
+            else:
+                self.mqttc.publish('sensors_in/moisture', 4)        
+                print(4)
+
     def on_message_temp(self, client, userdata, msg):
         tz = pytz.timezone('Asia/Bangkok')
         t = datetime.datetime.now(tz)
         thai_date = t.strftime('%Y-%m-%d')
         thai_time = t.strftime('%H:%M:%S')
-        thai_time = datetime.datetime.strptime(thai_time, fmt)
-
-        if (mn_time <= thai_time <= an_time):
-            self.mqttc.publish('sensors_in/moisture', 1)
-        else:
-            self.mqttc.publish('sensors_in/moisture', 0)
 
 
         num = random.randint(28, 32) + round(random.random(), 2)
@@ -82,7 +95,9 @@ class MainApp(MDApp):
         self.root.ids.sensor.text += '\n[color=#000000]{}[/color] [color=#000000]{}[/color] [color=#0d92b9]{}[/color]'.format(thai_date, thai_time, message)
 
     def on_start(self):
+        
         try:
+
             if self.icon == 'stop':
                 self.mqttc.connect(self.host)
                 self.mqttc.on_connect = self.on_connect

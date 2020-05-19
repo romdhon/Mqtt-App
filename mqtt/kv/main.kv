@@ -41,7 +41,8 @@ NavigationLayout:
                         size_hint_x: .8
                         spacing: '8dp'
                         MyLabel:
-                            text: 'History'
+                            id: auto
+                            text: 'AUTOMODE OFF'
                             theme_text_color: 'Secondary'
                         MDSeparator:
                             height: 1
@@ -58,11 +59,11 @@ NavigationLayout:
                         ImageButton:
                             source: self.button_off
                             on_release:
-                                self.change_mode(self.num_bt1)
+                                self.on_off_motor(self.num_bt2)
                         ImageButton:
                             source: self.button_off
                             on_release:
-                                self.on_off_motor(self.num_bt2)
+                                self.change_mode()
     MDNavigationDrawer:
         id: drawer
         ContentNavigationDrawer:
